@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mas Ejemplos de Alpine.js</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link rel="stylesheet" href="css/masreactivo.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          Alpine.js <small>Ejemplo: de algunas directivas de Alpine.js</small>
+        </div>
+      </div>
+
+      <!-- Avatar en la esquina superior derecha (contenedor ahora incluye el panel) -->
+      <div
+        class="avatar-wrapper"
+        aria-hidden="false"
+        x-data="{ open: false, 
+                    cerrar(){
+                        this.open=false;
+                    }
+                }"
+      >
+        <img src="img/miavatar.png" alt="Avatar" @click="open=true" />
+
+        <!-- Cuadro de opciones debajo del avatar (estático, solo CSS/HTML) -->
+        <div
+          class="options-panel"
+          role="menu"
+          aria-label="Opciones de usuario"
+          x-show="open"
+          x-transition
+          @click.outside="cerrar()"
+        >
+          <div class="panel-header">
+            <img src="img/miavatar.png" alt="avatar pequeño" />
+            <div>
+              <div class="name">Daniel</div>
+              <div style="font-size: 0.82rem; color: #666">
+                Perfil y configuraciones
+              </div>
+            </div>
+          </div>
+          <ul class="panel-list">
+            <li>Perfil & Certificados</li>
+            <li>Editar perfil</li>
+            <li>Mi registro</li>
+            <li>Salir</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <h2>Contenido de ejemplo</h2>
+      <p>
+        Este es un ejemplo mínimo que muestra cómo posicionar un avatar circular
+        en la esquina superior derecha del header y un cuadro con opciones
+        debajo, usando sólo HTML y CSS.
+      </p>
+    </main>
+  </body>
+</html>

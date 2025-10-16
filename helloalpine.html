@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hello Alpine</title>
+    <!--Se carga de un cdn la libreria alpinejs en diferido-->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+
+  <body x-data="{ message: 'I ❤️ Alpine' }">
+    <p>
+      Uso de <strong>x-data</strong> y <strong>x-text</strong>: el body recibe {
+      message: 'I ❤️ Alpine' } y en el h1 asignamos la variable message mediante
+      x-text.
+    </p>
+    <!-- x-data: crea un scope reactivo para este elemento y sus hijos.
+         Dentro de este objeto defines el "estado" (propiedades y métodos)
+         que Alpine sincroniza con la vista. Aquí se define `message`. -->
+
+    <h1 x-text="message"></h1>
+    <!-- x-text: vincula el contenido de texto del elemento al valor reactivo `message`.
+         Alpine reemplaza el texto interno por el valor actual de `message`.
+         Nota: x-text escapa HTML;  -->
+
+    <p>Uso de <strong>x-on</strong> o <strong>@</strong></p>
+    <p>
+      Aquí x-data recibe <strong>"{ contador: 0 }"</strong> y en el botón
+      controlamos el evento de Alpine con <strong><code>@click</code></strong
+      >, donde le sumamos uno al contador al ser presionado; el
+      <strong><code>&lt;span&gt;</code></strong> muestra el valor de
+      <strong><code>contador</code></strong> con
+      <strong><code>x-text</code></strong
+      >.
+    </p>
+    <div x-data="{ contador: 0 }">
+      <button @click="contador++">Incrementar</button>
+      <!-- x-on escucha eventos (x-on:event="..."); shorthand: @event="...". Ej: @click="contador++" -->
+      <span x-text="contador"></span>
+    </div>
+
+    <div
+      x-data="{ Lenguajes: ['C++', 'Java', 'Python','PHP'],
+                otroLenguaje:'',
+                agregarLenguaje(){
+                  this.Lenguajes.push(this.otroLenguaje);
+                  this.otroLenguaje='';
+                }}"
+      style="
+        border: 2px solid #333;
+        padding: 2px;
+        border-radius: 6px;
+        margin: 20px 0;
+      "
+    >
+      <p>Uso de <strong>x-for</strong></p>
+      <p>
+        En este div bordeado se inicializa un estado con la propiedad
+        <strong>Lenguajes</strong> (array con C++, Java, Python, PHP), una
+        cadena <strong>otroLenguaje</strong> y una función
+        <strong>agregarLenguaje</strong> que añade el valor del input al arreglo
+        y limpia el campo. Se usa <strong>x-for</strong> para recorrer
+        <strong>Lenguajes</strong> y mostrar cada elemento en la lista.
+      </p>
+      <p>Existen distintos lenguajes de programacion</p>
+      <p>Estos son algunos de los mas usados en el backend:</p>
+      <ul>
+        <template x-for="Lenguaje in Lenguajes">
+          <!-- x-for: itera una lista y renderiza elementos repetidos.
+            Ej: x-for="(item,
+             i) in items". Usa :key para identificar cada elemento. -->
+          <li :key="Lenguaje">
+            <span x-text="Lenguaje"></span>
+          </li>
+        </template>
+      </ul>
+      <input
+        type="text"
+        x-model="otroLenguaje"
+        placeholder="Agrega otro lenguaje"
+      />
+      <button @click="agregarLenguaje">Agregar</button>
+    </div>
+  </body>
+</html>
