@@ -131,3 +131,51 @@ Se coloca en un elemento HTML y acepta una expresión JavaScript que se evalúa 
     </button>
 </div>
 ```
+## x-bind
+**x-bind (alias ':')**
+
+La directiva x-bind vincula atributos o propiedades del DOM a valores reactivos definidos en x-data. Permite que la vista se actualice automáticamente cuando cambian los datos, manteniendo la sincronía entre estado y representación sin manipulación manual del DOM.
+
+Casos de uso principales:
+
+- Enlace de valor (:value)
+    • Asigna dinámicamente el valor de un input a la propiedad reactiva correspondiente.
+    • Mantiene el campo sincronizado con el estado inicial y sus actualizaciones.
+- Enlace de propiedad (disabled)
+    • Vincula atributos booleanos como disabled a expresiones reactivas.
+    • Permite habilitar o deshabilitar controles según el estado sin lógica imperativa.
+- Enlace a estilos (style / color)
+    • Actualiza propiedades de estilo (por ejemplo color) según valores reactivos.
+    • Facilita cambios visuales declarativos en respuesta a cambios de estado.
+Notas:
+- x-bind acepta tanto la sintaxis larga (x-bind:attr) como el atajo ':' (ej. :value).
+
+- Las vinculaciones actualizan el DOM de forma reactiva; si necesita control adicional.
+
+```html
+<div
+    x-data="{ nombre: 'Joe Doe', 
+        disabled: false,
+        color: 'green' }"
+    >
+    <div class="form-row">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" :value="nombre" :disabled="disabled" />
+        <button type="button" @click="disabled = true">Desactivar</button>
+        <p x-text="disabled ? 'Input desactivado' : 'Input activo'"></p>
+        <button
+            type="button"
+            @click="color = color === 'green' ? 'red' : 'green'"
+        >
+            Cambiar de color
+        </button>
+        <!-- Caja que muestra el color; se enlaza el style al fondo usando :style -->
+        <div
+            class="color-box"
+            :style="`background-color: ${color}; width: 120px; height: 36px; margin-top: .5rem; border-radius: 6px;`"
+            aria-hidden="true"
+        >
+        </div>
+    </div>
+</div>
+```
