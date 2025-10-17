@@ -18,19 +18,13 @@
         </div>
       </div>
 
-      <!-- Avatar en la esquina superior derecha (contenedor ahora incluye el panel) -->
       <div
         class="avatar-wrapper"
         aria-hidden="false"
-        x-data="{ open: false, 
-                    cerrar(){
-                        this.open=false;
-                    }
-                }"
+        x-data="{ open:false, cerrar(){ this.open=false } }"
       >
-        <img src="img/miavatar.png" alt="Avatar" @click="open=true" />
+        <img src="img/miavatar.png" alt="Avatar" @click="open = true" />
 
-        <!-- Cuadro de opciones debajo del avatar (estático, solo CSS/HTML) -->
         <div
           class="options-panel"
           role="menu"
@@ -61,10 +55,73 @@
     <main class="container">
       <h2>Contenido de ejemplo</h2>
       <p>
-        Este es un ejemplo mínimo que muestra cómo posicionar un avatar circular
-        en la esquina superior derecha del header y un cuadro con opciones
-        debajo, usando sólo HTML y CSS.
+        En esta página se aplica la directiva <strong>x-show</strong> para
+        mostrar/ocultar el menú del avatar; además usamos
+        <strong>x-transition</strong> y <strong>@click.outside</strong> para
+        mejorar la interacción.
       </p>
+
+      <section
+        x-data="{ nombre:'Joe Doe', disabled:false, color:'green' }"
+        role="region"
+        aria-labelledby="x-bind-title"
+        class="form-section"
+      >
+        <h3 id="x-bind-title">Directiva: <strong>x-bind</strong></h3>
+        <p>
+          En este ejemplo veremos el uso de la directiva
+          <strong>x-bind</strong> (shorthand <code>:</code>) para enlazar
+          propiedades de un elemento a datos de Alpine.js.
+        </p>
+
+        <p>
+          Descripción general: la directiva <strong>x-bind</strong> (o
+          <strong>':'</strong>) vincula atributos o propiedades DOM a valores
+          reactivos definidos en <strong>x-data</strong>, permitiendo que la
+          vista se actualice automáticamente cuando cambian los datos.
+        </p>
+
+        <h4>Casos de uso mostrados</h4>
+        <ol>
+          <li>
+            <strong>:value</strong> — Enlace de valor: asigna dinámicamente el
+            valor del input desde <strong>x-data</strong>.
+          </li>
+          <li>
+            <strong>disabled</strong> — Enlace de propiedad: permite
+            activar/desactivar controles según estado reactivo.
+          </li>
+          <li>
+            <strong>:style</strong> — Enlace al estilo: permite enlazar estilos
+            (p. ej. color) desde datos reactivos.
+          </li>
+        </ol>
+
+        <p>
+          Notas: <strong>x-bind</strong> puede usarse para atributos o
+          propiedades; las expresiones deben existir en
+          <strong>x-data</strong> para ser reactivas.
+        </p>
+
+        <div class="form-row">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" :value="nombre" :disabled="disabled" />
+          <button type="button" @click="disabled = true">Desactivar</button>
+          <p x-text="disabled ? 'Input desactivado' : 'Input activo'"></p>
+
+          <button
+            type="button"
+            @click="color = color === 'green' ? 'red' : 'green'"
+          >
+            Cambiar de color
+          </button>
+          <div
+            class="color-box"
+            :style="`background-color: ${color}; width: 120px; height: 36px; margin-top: .5rem;`"
+            aria-hidden="true"
+          ></div>
+        </div>
+      </section>
     </main>
   </body>
 </html>
