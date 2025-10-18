@@ -23,3 +23,7 @@ header h1 {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 12px;
 }
+
+.margen-top-20 {
+  margin-top: 20px;
+}
