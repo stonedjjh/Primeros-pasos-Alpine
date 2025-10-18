@@ -110,6 +110,11 @@ body {
 .color-box {
   border-radius: 6px;
 }
+
+.margen-top-20 {
+  margin-top: 20px;
+}
+
 @media (max-width: 480px) {
   :root {
     --avatar-size: 72px;

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aprendiendo x-model</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <h1>Aprendiendo x-model y refs</h1>
+    <main>
+      <section class="margen-top-20">
+        <h2>Usando x-bind vs x-model</h2>
+        <p>
+          En este ejemplo se muestran las diferencias entre las directivas
+          <strong>x-bind</strong> y <strong>x-model</strong>.
+        </p>
+        <article
+          class="note-box margen-top-20"
+          role="note"
+          aria-label="Diferencias x-bind y x-model"
+        >
+          <h4>Diferencias entre <code>x-bind</code> y <code>x-model</code></h4>
+          <p>
+            La diferencia entre <strong>x-bind</strong> y
+            <strong>x-model</strong> es que <strong>x-model</strong> crea un
+            vínculo bidireccional, es decir que si su valor es cambiado en el
+            HTML, la variable también se actualizará.
+            <strong>x-bind:value</strong> solo establece el valor inicial y las
+            actualizaciones desde el código (<strong>x-data</strong>) al campo,
+            siendo unidireccional.
+          </p>
+          <div x-data="{ nombre: '' }">
+            <p>input usando x-model</p>
+            <input
+              type="text"
+              x-model="nombre"
+              placeholder="Ingresa tu nombre"
+            />
+            <p>input usando x-bind</p>
+            <input
+              type="text"
+              :value="nombre"
+              placeholder="Ingresa tu nombre"
+            />
+            <p>
+              Ingrese un valor en el primer input y el segundo se actualizara
+              automaticamente. Ahora ingrese un valor en el segundo input y vea
+              el resultado en el siguiente span
+            </p>
+            <p>Hola, <span x-text="nombre"></span>!</p>
+          </div>
+        </article>
+
+        <article
+          class="note-box margen-top-10"
+          role="note"
+          aria-label="Descripción x-ref y $refs"
+        >
+          <h4>Directiva x-ref y el mágico $refs</h4>
+          <p>
+            La directiva <code>x-ref="nombre"</code> asigna una referencia a un
+            elemento DOM. Dentro de expresiones Alpine puedes usar el mágico
+            <code>$refs.nombre</code> para acceder directamente al nodo (por
+            ejemplo <code>$refs.miInput.value</code> o
+            <code>$refs.miInput.focus()</code>).
+          </p>
+          <p>
+            Es útil para leer o modificar propiedades del elemento (valor, foco,
+            selección) desde handlers o métodos sin necesidad de exponer esas
+            propiedades en <code>x-data</code>.
+          </p>
+        </article>
+
+        <div x-data="{ contador: 0 }">
+          <input
+            type="text"
+            @keyup="contador = $refs.myInput.value.length"
+            x-ref="myInput"
+            maxlength="10"
+          />
+
+          Caracteres disponibles: <span x-text=" 10 - contador"></span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
