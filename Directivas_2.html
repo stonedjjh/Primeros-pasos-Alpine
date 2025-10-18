@@ -65,7 +65,7 @@
         x-data="{ nombre:'Joe Doe', disabled:false, color:'green' }"
         role="region"
         aria-labelledby="x-bind-title"
-        class="form-section"
+        class="form-section margen-top-20"
       >
         <h3 id="x-bind-title">Directiva: <strong>x-bind</strong></h3>
         <p>
@@ -81,8 +81,8 @@
           vista se actualice automáticamente cuando cambian los datos.
         </p>
 
-        <h4>Casos de uso mostrados</h4>
-        <ol>
+        <h4 class="margen-top-20">Casos de uso mostrados</h4>
+        <ol class="margen-top-20">
           <li>
             <strong>:value</strong> — Enlace de valor: asigna dinámicamente el
             valor del input desde <strong>x-data</strong>.
@@ -97,13 +97,13 @@
           </li>
         </ol>
 
-        <p>
+        <p class="margen-top-20">
           Notas: <strong>x-bind</strong> puede usarse para atributos o
           propiedades; las expresiones deben existir en
           <strong>x-data</strong> para ser reactivas.
         </p>
 
-        <div class="form-row">
+        <div class="form-row margen-top-20">
           <label for="nombre">Nombre</label>
           <input id="nombre" type="text" :value="nombre" :disabled="disabled" />
           <button type="button" @click="disabled = true">Desactivar</button>
