@@ -64,6 +64,54 @@ Se coloca en un elemento HTML y acepta una expresión que define la variable de 
     </ul>
 </div>
 ```
+## x-bind
+**x-bind (alias ':')**
+
+La directiva x-bind vincula atributos o propiedades del DOM a valores reactivos definidos en x-data. Permite que la vista se actualice automáticamente cuando cambian los datos, manteniendo la sincronía entre estado y representación sin manipulación manual del DOM.
+
+Casos de uso principales:
+
+- Enlace de valor (:value)
+    • Asigna dinámicamente el valor de un input a la propiedad reactiva correspondiente.
+    • Mantiene el campo sincronizado con el estado inicial y sus actualizaciones.
+- Enlace de propiedad (disabled)
+    • Vincula atributos booleanos como disabled a expresiones reactivas.
+    • Permite habilitar o deshabilitar controles según el estado sin lógica imperativa.
+- Enlace a estilos (style / color)
+    • Actualiza propiedades de estilo (por ejemplo color) según valores reactivos.
+    • Facilita cambios visuales declarativos en respuesta a cambios de estado.
+Notas:
+- x-bind acepta tanto la sintaxis larga (x-bind:attr) como el atajo ':' (ej. :value).
+
+- Las vinculaciones actualizan el DOM de forma reactiva; si necesita control adicional.
+
+```html
+<div
+    x-data="{ nombre: 'Joe Doe', 
+        disabled: false,
+        color: 'green' }"
+    >
+    <div class="form-row">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" :value="nombre" :disabled="disabled" />
+        <button type="button" @click="disabled = true">Desactivar</button>
+        <p x-text="disabled ? 'Input desactivado' : 'Input activo'"></p>
+        <button
+            type="button"
+            @click="color = color === 'green' ? 'red' : 'green'"
+        >
+            Cambiar de color
+        </button>
+        <!-- Caja que muestra el color; se enlaza el style al fondo usando :style -->
+        <div
+            class="color-box"
+            :style="`background-color: ${color}; width: 120px; height: 36px; margin-top: .5rem; border-radius: 6px;`"
+            aria-hidden="true"
+        >
+        </div>
+    </div>
+</div>
+```
 
 ## x-model
 La directiva `x-model` se utiliza para enlazar el valor de un elemento de formulario (como un input, textarea o select) con una propiedad del estado del componente en Alpine.js. Se coloca en el elemento de formulario y acepta el nombre de la propiedad del estado a la que se desea enlazar.
@@ -114,6 +162,20 @@ Otra manera de hacer esto es definir funciones en el x-data
     </button>
 </div>
 ```
+> [!TIP] La diferencia entre x-bind y x-model es que x-model crea un vínculo bidireccional, es decir que si su valor es cambiado en el HTML, la variable también se actualizará. x-bind:value solo establece el valor inicial y las actualizaciones desde el código (x-data) al campo, siendo unidireccional.
+
+```html
+<div x-data="{ nombre: '' }">
+    <p>input usando x-model y x-bind</P>
+    <input type="text" x-model="nombre" :value="nombre" placeholder="Ingresa tu nombre">    
+    <p>input usando x-bind</P>
+    <input type="text" :value="nombre"  placeholder="Ingresa tu nombre">
+    <p>Ingrese un valor en el primer input y el segundo se actualizara automaticamente.
+       Ahora ingrese un valor en el segundo input y vea el resultado
+    </p> 
+    <p>Hola, <span x-text="nombre"></span>!</p>
+</div>
+```
 
 ## x-show
 La directiva `x-show` se utiliza para mostrar o ocultar un elemento en Alpine.
@@ -131,51 +193,24 @@ Se coloca en un elemento HTML y acepta una expresión JavaScript que se evalúa 
     </button>
 </div>
 ```
-## x-bind
-**x-bind (alias ':')**
 
-La directiva x-bind vincula atributos o propiedades del DOM a valores reactivos definidos en x-data. Permite que la vista se actualice automáticamente cuando cambian los datos, manteniendo la sincronía entre estado y representación sin manipulación manual del DOM.
+## x-ref
+La directiva `x-ref` permite crear una referencia hacia una etiqueta, es el equivalente al getElementById de JavaScript.
 
-Casos de uso principales:
-
-- Enlace de valor (:value)
-    • Asigna dinámicamente el valor de un input a la propiedad reactiva correspondiente.
-    • Mantiene el campo sincronizado con el estado inicial y sus actualizaciones.
-- Enlace de propiedad (disabled)
-    • Vincula atributos booleanos como disabled a expresiones reactivas.
-    • Permite habilitar o deshabilitar controles según el estado sin lógica imperativa.
-- Enlace a estilos (style / color)
-    • Actualiza propiedades de estilo (por ejemplo color) según valores reactivos.
-    • Facilita cambios visuales declarativos en respuesta a cambios de estado.
-Notas:
-- x-bind acepta tanto la sintaxis larga (x-bind:attr) como el atajo ':' (ej. :value).
-
-- Las vinculaciones actualizan el DOM de forma reactiva; si necesita control adicional.
+> [!NOTE] Esta directiva frecuentemente se usa en conjunto con el metodo magico $refs el cual permite acceder a todas las referencias del DOM
 
 ```html
-<div
-    x-data="{ nombre: 'Joe Doe', 
-        disabled: false,
-        color: 'green' }"
-    >
-    <div class="form-row">
-        <label for="nombre">Nombre</label>
-        <input id="nombre" type="text" :value="nombre" :disabled="disabled" />
-        <button type="button" @click="disabled = true">Desactivar</button>
-        <p x-text="disabled ? 'Input desactivado' : 'Input activo'"></p>
-        <button
-            type="button"
-            @click="color = color === 'green' ? 'red' : 'green'"
-        >
-            Cambiar de color
-        </button>
-        <!-- Caja que muestra el color; se enlaza el style al fondo usando :style -->
-        <div
-            class="color-box"
-            :style="`background-color: ${color}; width: 120px; height: 36px; margin-top: .5rem; border-radius: 6px;`"
-            aria-hidden="true"
-        >
-        </div>
-    </div>
+<div x-data="{ contador: 0 }">
+    <input
+        type="text"
+        @keyup="contador = $refs.myInput.value.length"
+        x-ref="myInput"
+        maxlength="10"
+    />
+    Caracteres disponibles: <span x-text=" 10 - contador"></span>
 </div>
 ```
+
+
+
+
