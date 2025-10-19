@@ -162,6 +162,7 @@ Otra manera de hacer esto es definir funciones en el x-data
     </button>
 </div>
 ```
+
 > [!TIP] La diferencia entre x-bind y x-model es que x-model crea un vínculo bidireccional, es decir que si su valor es cambiado en el HTML, la variable también se actualizará. x-bind:value solo establece el valor inicial y las actualizaciones desde el código (x-data) al campo, siendo unidireccional.
 
 ```html
@@ -211,6 +212,61 @@ La directiva `x-ref` permite crear una referencia hacia una etiqueta, es el equi
 </div>
 ```
 
+## x-cloak
+La directiva `x-cloak` permite evitar los parpadeos de pantalla, mostrando el bloque de elementos en que se defina solo cuando esten completamente cargado.
 
+> [!IMPORTANT]
+> Para que funcione correctamente es necesario agregar el siguiente CSS al proyecto: [x-cloak] { display: none !important; }
 
+```html
+<style>
+  /* 1. REGLA ESENCIAL: Oculta el contenido antes de que Alpine se inicialice. */
+  [x-cloak] {
+    display: none !important;
+  }
 
+  /* 2. Estilos básicos para que el ejemplo se vea limpio */
+  .contenedor-componente {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-height: 150px; /* Evita que el contenedor salte al cargar */
+  }
+
+  .input-personalizado {
+    border: 1px solid #000;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+</style>
+
+<div
+  x-data="{ 
+    contador: 0,
+    listo: false,
+    retardo3segundos(){
+      // Inicia el proceso de carga de 3 segundos
+      setTimeout(() => { 
+        this.listo = true; 
+      }, 3000); 
+    } 
+  }"
+  x-init="retardo3segundos()"
+  x-cloak 
+  class="contenedor-componente"
+>
+  
+  <div x-show="listo" x-transition:opacity>
+    <input
+      type="text"
+      @keyup="contador = $refs.myInput.value.length"
+      x-ref="myInput"
+      maxlength="10"
+      class="input-personalizado"
+    />
+    <p>Caracteres disponibles: <span x-text=" 10 - contador"></span></p>
+  </div>
+  
+  <p x-show="!listo" x-transition:opacity>Cargando... (3 segundos de retardo)</p>
+</div>
+```
