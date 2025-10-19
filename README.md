@@ -47,10 +47,6 @@ Este proyecto se publica bajo la licencia **MIT**. Eso significa que cualquiera 
 
 El archivo `LICENSE` con el texto completo de la licencia MIT está incluido en el repositorio.
 
-## GitHub Pages
-
-Si quieres publicar el sitio en GitHub Pages, puedes activar Pages desde la configuración del repositorio y seleccionar la rama `main` (root) o la carpeta `/docs`. Yo puedo ayudarte con los pasos si lo deseas.
-
 ## Contacto
 
 Daniel Jiménez — repositorio: [github.com/stonedjjh/Primeros-pasos-Alpine](https://github.com/stonedjjh/Primeros-pasos-Alpine)
