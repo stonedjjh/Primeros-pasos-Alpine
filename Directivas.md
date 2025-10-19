@@ -51,12 +51,11 @@ La directiva `x-for` se utiliza para iterar sobre un arreglo en Alpine.
 
 Se coloca en un elemento HTML y acepta una expresión que define la variable de iteración y el arreglo sobre el cual se itera.
 
-```html
-
 > [!IMPORTANT]
     Se debe declarar el x-for dentro de una etiqueta <template>
     Y solo puede tener un elemento raiz
 
+```html
 
 <div x-data="{ Lenguajes: ['C++', 'Java', 'Python','PHP']}">
     <p>Existen distintos lenguajes de programacion</p>
