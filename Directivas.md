@@ -13,7 +13,7 @@ en donde se defina y a sus hijos
 </div>
 ```
 
-Aqui la variable contador es accesible en la etiqueta de su definicion **<div>**  y todos sus hijos
+Aqui la variable contador es accesible en la etiqueta de su definicion **`<div>`**  y todos sus hijos
 
 ## x-text
 La directiva `x-text` se utiliza para enlazar texto dinámico a un elemento HTML. Se coloca en un elemento y acepta una expresión JavaScript que se evalúa y se muestra como texto dentro del elemento.
@@ -53,7 +53,7 @@ Se coloca en un elemento HTML y acepta una expresión que define la variable de 
 
 > [!IMPORTANT]
  Se debe declarar el x-for dentro de un bloque de etiqueta `<template></template>`
- Y solo puede tener un elemento raiz
+ Y solo puede tener un elemento raiz.
 
 ```html
 <div x-data="{ Lenguajes: ['C++', 'Java', 'Python','PHP']}">
@@ -142,8 +142,8 @@ La directiva `x-model` se utiliza para enlazar el valor de un elemento de formul
 
 Otra manera de hacer esto es definir funciones en el x-data
 > [!TIP]
-> para referirse a las variable usadas en el
-> x-data dentro de una funcion se usa el this
+ para referirse a las variable usadas en el
+ x-data dentro de una funcion se usa el this
 
 ```html
 <div x-data="{ Lenguajes: ['C++', 'Java', 'Python','PHP'],
@@ -168,7 +168,9 @@ Otra manera de hacer esto es definir funciones en el x-data
 </div>
 ```
 
-> [!TIP] La diferencia entre x-bind y x-model es que x-model crea un vínculo bidireccional, es decir que si su valor es cambiado en el HTML, la variable también se actualizará. x-bind:value solo establece el valor inicial y las actualizaciones desde el código (x-data) al campo, siendo unidireccional.
+> [!TIP]
+ La diferencia entre x-bind y x-model es que x-model crea un
+ vínculo bidireccional, es decir que si su valor es cambiado en el HTML, la variable también se actualizará. x-bind:value solo establece el valor inicial y las actualizaciones desde el código (x-data) al campo, siendo unidireccional.
 
 ```html
 <div x-data="{ nombre: '' }">
@@ -203,7 +205,8 @@ Se coloca en un elemento HTML y acepta una expresión JavaScript que se evalúa 
 ## x-ref
 La directiva `x-ref` permite crear una referencia hacia una etiqueta, es el equivalente al getElementById de JavaScript.
 
-> [!NOTE] Esta directiva frecuentemente se usa en conjunto con el metodo magico $refs el cual permite acceder a todas las referencias del DOM
+> [!NOTE]
+ Esta directiva frecuentemente se usa en conjunto con el metodo magico $refs el cual permite acceder a todas las referencias del DOM
 
 ```html
 <div x-data="{ contador: 0 }">
