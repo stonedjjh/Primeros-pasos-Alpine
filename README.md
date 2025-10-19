@@ -1,21 +1,29 @@
+
 # Primeros pasos con [Alpine.js](https://alpinejs.dev/)
 
 Este repositorio recopila mi acercamiento e interpretación personal sobre las directivas y el uso básico de Alpine.js. Está pensado como un espacio de aprendizaje y ejemplos prácticos para uso personal y educativo. Puedes usar el contenido siempre que reconozcas mi trabajo (ver sección de licencia).
 
-Autor: Daniel Jiménez
-Repositorio: https://github.com/stonedjjh/Primeros-pasos-Alpine
+**Autor:** Daniel Jiménez  
+**Repositorio:** [github.com/stonedjjh/Primeros-pasos-Alpine](https://github.com/stonedjjh/Primeros-pasos-Alpine)
 
 ## ¿Qué encontrarás aquí?
+
 - `helloalpine.html` — Ejemplos introductorios: `x-data`, `x-text`, `x-on/@`, `x-for`, `x-model`.
-- `masreactivo.html` — Ejemplos más completos: `x-show`, `x-transition`, `@click.outside`, `x-bind` y un pequeño menú de usuario con avatar.
+- `Directivas_2.html` — Ejemplos y documentación de directivas (por ejemplo `x-show`, `x-transition`, `@click.outside`, `x-bind`).
+- `Directivas_3.html` — Material adicional y ejemplos complementarios sobre directivas.
 - `Directivas.md` — Documentación y notas sobre cada directiva (ejemplos y sintaxis).
-- `css/masreactivo.css` — Estilos usados por `masreactivo.html`.
+- `css/masreactivo.css` — Estilos usados por las páginas de directivas.
 
 ## Índice (portal)
+
 He incluido un `index.html` en la raíz que sirve como portal para navegar entre las páginas del repo.
 
+Además, se agregó la carpeta `practicas/` que contiene ejercicios y soluciones tomados del repositorio de práctica del curso: [martin-masterclass/practice_part_1](https://github.com/martin-masterclass/-martin-masterclass-alpinejs_v3_course/tree/main/practice_part_1)
+
 ## Cómo ver las páginas localmente
+
 1. Opción rápida: abrir los archivos HTML en el navegador (doble clic en Windows). Esto funciona para demos sencillas.
+
 2. Opción recomendada (servidor local): desde la carpeta del proyecto puedes ejecutar un servidor estático:
 
 ```powershell
@@ -27,20 +35,25 @@ python -m http.server 5500
 3. También puedes usar la extensión "Live Server" de VS Code para desarrollo rápido.
 
 ## Contribuir
+
 Gracias por el interés en contribuir. Si quieres aportar:
+
 - Abre un issue para discutir cambios o mejoras.
 - Envía un pull request con una descripción clara de lo que haces.
 - Mantén el estilo sencillo y documenta cualquier ejemplo nuevo que agregues.
 
 ## Licencia (propuesta)
-Propongo usar la licencia MIT: permite cualquier uso (personal, educativo o comercial) siempre que se mantenga el aviso de copyright y la atribución al autor.
 
-Si estás de acuerdo con MIT la incluiré como `LICENSE` en el repositorio. Si prefieres otra licencia (por ejemplo una de contenido como CC-BY), dímelo.
+Propongo usar la licencia **MIT**: permite cualquier uso (personal, educativo o comercial) siempre que se mantenga el aviso de copyright y la atribución al autor.
+
+Si estás de acuerdo con MIT la incluiré como `LICENSE` en el repositorio. Si prefieres otra licencia (por ejemplo una de contenido como **CC-BY**), dímelo.
 
 ## GitHub Pages
+
 Si quieres publicar el sitio en GitHub Pages, puedes activar Pages desde la configuración del repositorio y seleccionar la rama `main` (root) o la carpeta `/docs`. Yo puedo ayudarte con los pasos si lo deseas.
 
 ## Contacto
-Daniel Jiménez — enlace al repositorio: https://github.com/stonedjjh/Primeros-pasos-Alpine
+
+Daniel Jiménez — repositorio: [github.com/stonedjjh/Primeros-pasos-Alpine](https://github.com/stonedjjh/Primeros-pasos-Alpine)
 
 ---
