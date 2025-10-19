@@ -12,7 +12,6 @@ Este repositorio recopila mi acercamiento e interpretación personal sobre las d
 - `Directivas_2.html` — Ejemplos y documentación de directivas (por ejemplo `x-show`, `x-transition`, `@click.outside`, `x-bind`).
 - `Directivas_3.html` — Material adicional y ejemplos complementarios sobre directivas.
 - `Directivas.md` — Documentación y notas sobre cada directiva (ejemplos y sintaxis).
-- `css/masreactivo.css` — Estilos usados por las páginas de directivas.
 
 ## Índice (portal)
 
@@ -42,11 +41,11 @@ Gracias por el interés en contribuir. Si quieres aportar:
 - Envía un pull request con una descripción clara de lo que haces.
 - Mantén el estilo sencillo y documenta cualquier ejemplo nuevo que agregues.
 
-## Licencia (propuesta)
+## Licencia
 
-Propongo usar la licencia **MIT**: permite cualquier uso (personal, educativo o comercial) siempre que se mantenga el aviso de copyright y la atribución al autor.
+Este proyecto se publica bajo la licencia **MIT**. Eso significa que cualquiera puede usar, copiar, modificar y distribuir el contenido (uso personal, educativo o comercial) siempre que se mantenga el aviso de copyright y la atribución al autor.
 
-Si estás de acuerdo con MIT la incluiré como `LICENSE` en el repositorio. Si prefieres otra licencia (por ejemplo una de contenido como **CC-BY**), dímelo.
+El archivo `LICENSE` con el texto completo de la licencia MIT está incluido en el repositorio.
 
 ## GitHub Pages
 
