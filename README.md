@@ -51,4 +51,6 @@ El archivo `LICENSE` con el texto completo de la licencia MIT está incluido en 
 
 Daniel Jiménez — repositorio: [github.com/stonedjjh/Primeros-pasos-Alpine](https://github.com/stonedjjh/Primeros-pasos-Alpine)
 
+LinkedIn: [Daniel Jiménez](https://www.linkedin.com/in/daniel-jimenez-88a2a293/)
+
 ---
